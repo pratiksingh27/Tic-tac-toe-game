@@ -1,12 +1,12 @@
-console.log("Welcome to Tic Tac Toe")
-let change = new Audio("ting.mp3")
-let gameover = new Audio("gameover.mp3")
-let turn = "X"
+console.log("Welcome to Tic Tac Toe");
+let change = new Audio("ting.mp3");
+let gameover = new Audio("gameover.mp3");
+let turn = "X";
 let gameFinish = false;
 
 // For changing the turn
 const changeTurn = ()=>{
-    return turn === "X"? "0": "X"
+    return turn === "X"? "0": "X";
 }
 
 // Function to check for a win
@@ -29,8 +29,11 @@ const checkWin = ()=>{
         gameFinish = true;
         
         document.querySelector(".imgbox").getElementsByTagName("img")[0].style.width="180px";
-        document.querySelector(".line").style.width ="20vw"
-        document.querySelector(".line").style.transform =`translate(${e[3]}vw, ${e[4]}vw) rotate(${e[5]}deg)`
+        document.querySelector(".line").style.width ="20vw";
+        document.querySelector(".line").style.transform =`translate(${e[3]}vw, ${e[4]}vw) rotate(${e[5]}deg)`;
+        window.setTimeout( function(){
+            window.location.reload();
+        },5000);
         
         }
 
@@ -48,7 +51,7 @@ Array.from(boxes).forEach(element =>{
             change.play();
             checkWin();
             if(!gameFinish){
-             document.getElementsByClassName("result")[0].innerText  = `Turn for ${turn}`
+             document.getElementsByClassName("result")[0].innerText  = `Turn for ${turn}`;
             }
         }
     })
@@ -60,10 +63,10 @@ reset.addEventListener('click', ()=>{
     let text = document.getElementsByClassName("boxtext");
     Array.from(text).forEach(element => {
         element.innerText=" ";
-        turn = "X"
+        turn = "X";
         gameFinish =false;
         document.getElementsByClassName("result")[0].innerText  = `Turn for ${turn}`;
-        document.querySelector(".imgbox").getElementsByTagName("img")[0].style.width="0px"
-        document.querySelector(".line").style.width ="0vw"
+        document.querySelector(".imgbox").getElementsByTagName("img")[0].style.width="0px";
+        document.querySelector(".line").style.width ="0vw";
     })
 })
